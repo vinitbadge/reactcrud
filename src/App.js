@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreateMentor from "./components/create-mentor.component";
 import EditMentor from "./components/edit-mentor.component";
 import MentorList from "./components/mentor-list.component";
+import TaskList from "./components/task-list.component";
 
 function App() {
   return (<Router>
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/create-mentor" component={CreateMentor} />
                 <Route path="/edit-mentor/:id" component={EditMentor} />
                 <Route path="/mentor-list" component={MentorList} />
+                <Route path="/task-list/:id" component={TaskList} />
               </Switch>
             </div>
           </Col>

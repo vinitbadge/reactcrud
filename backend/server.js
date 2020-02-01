@@ -36,7 +36,8 @@ const server = app.listen(port, () => {
 
 // 404 Error
 app.use((req, res, next) => {
-  next(createError(404));
+  console.log("route not found:" + req.url)
+  next();
 });
 
 app.use(function (err, req, res, next) {

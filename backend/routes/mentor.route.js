@@ -4,6 +4,7 @@ let mongoose = require('mongoose'),
 
 // Mentor Model
 let mentorSchema = require('../models/Mentor');
+let taskSchema = require('../models/Task');
 
 // CREATE Mentor
 router.route('/create-mentor').post((req, res, next) => {
@@ -68,4 +69,26 @@ router.route('/delete-mentor/:id').delete((req, res, next) => {
   })
 })
 
+// CREATE Mentor
+router.route('/create-task/:id').post((req, res, next) => {
+  req.body.mentor_id = req.params.id
+  taskSchema.create(req.body, (error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      console.log(data)
+      res.json(data)
+    }
+  })
+});
+
+router.route('/tasks/:id').get((req, res) => {
+  taskSchema.find({ mentor_id: req.params.id }, null, { sort: { created_at: -1 } }, (error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+})
 module.exports = router;

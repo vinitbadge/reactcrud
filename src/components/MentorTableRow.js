@@ -30,6 +30,9 @@ export default class MentorTableRow extends Component {
                         Edit
                     </Link>
                     <Button onClick={this.deleteMentor} size="sm" variant="danger">Delete</Button>
+                    <Link className="edit-link" to={"/task-list/" + this.props.obj._id}>
+                        Task List
+                    </Link>
                 </td>
             </tr>
         );
